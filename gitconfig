@@ -1,0 +1,27 @@
+[alias]
+  br         = branch
+  ci         = commit
+  co         = checkout
+  history    = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  last       = log -1 HEAD
+  st         = status
+
+[color]
+  branch  = auto
+  diff    = auto
+  status  = auto
+  ui      = true
+
+[core]
+  excludesfile = ~/.gitignore_global
+
+[github]
+  ;user    = USER
+  ;token   = TOKEN
+
+[push]
+	default = simple
+
+[user]
+  ;email   = EMAIL
+  ;name    = NAME
