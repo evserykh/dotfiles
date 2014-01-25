@@ -59,12 +59,19 @@ alias ls='ls -G'
 
 export HISTSIZE=500000
 export HISTFILESIZE=${HISTSIZE}
+export HISTCONTROL='ignoreboth:erasedups'
+export HISTIGNORE='cd:ls:mc'
+
+shopt -s cdspell cmdhist histappend
 
 # Homebrew
 export PATH="/usr/local/bin:${PATH}"
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+# Bash-completion
+if [ $(which brew) ]; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
 fi
 
 # Ruby Version Manager
