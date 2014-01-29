@@ -40,6 +40,8 @@ git_prompt()
 }
 
 # Thy holy prompt.
+export PROMPT_COMMAND='PS1="${c_user}\u@\h${c_path} \w${c_reset}$(git_prompt)${c_path} $ ${c_reset}\[\e[0m\]"'
+
 if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
   update_terminal_cwd() {
     # Identify the directory using a "file:" scheme URL,
