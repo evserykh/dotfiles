@@ -57,7 +57,7 @@ if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
 fi
 
 alias grep='grep --color=auto'
-alias ls='ls -G'
+alias ls='ls --color=auto'
 
 export HISTSIZE=500000
 export HISTFILESIZE=${HISTSIZE}
