@@ -57,7 +57,12 @@ if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
 fi
 
 alias grep='grep --color=auto'
-alias ls='ls --color=auto'
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  alias ls="ls --color=auto"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  alias ls="ls -G"
+fi
 
 export HISTSIZE=500000
 export HISTFILESIZE=${HISTSIZE}
