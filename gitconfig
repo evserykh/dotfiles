@@ -1,10 +1,10 @@
 [alias]
-  br         = branch
-  ci         = commit
-  co         = checkout
-  history    = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  last       = log -1 HEAD
-  st         = status
+  br   = branch
+  ci   = commit
+  co   = checkout
+  last = log -1 HEAD
+  lg   = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  st   = status
 
 [color]
   branch  = auto
