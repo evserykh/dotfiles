@@ -1,6 +1,6 @@
 for file in bash_profile bashrc gemrc gitconfig gitignore_global inputrc irbrc pryrc
 do
   echo "Download $file -> .$file"
-  
-  curl -s https://raw2.github.com/evserykh/dotfiles/master/$file > .$file
+
+  curl -s https://raw.githubusercontent.com/evserykh/dotfiles/master/$file > .$file
 done
