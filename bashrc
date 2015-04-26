@@ -3,7 +3,7 @@ initialize_rvm()
   if [ -s "$HOME/.rvm/scripts/rvm" ]; then
     source "$HOME/.rvm/scripts/rvm"
 
-    export PATH=$PATH:$HOME/.rvm/bin
+    export PATH=$HOME/.rvm/bin:$PATH
   fi
 }
 
