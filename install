@@ -1,4 +1,4 @@
-for file in bash_profile bashrc gemrc gitconfig gitignore_global inputrc irbrc pryrc
+for file in bash_profile bashrc gemrc gitconfig gitignore_global inputrc irbrc pryrc tmux.conf
 do
   echo "Download $file -> .$file"
 
