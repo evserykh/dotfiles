@@ -1,16 +1,7 @@
-initialize_rvm()
-{
-  if [ -s "$HOME/.rvm/scripts/rvm" ]; then
-    source "$HOME/.rvm/scripts/rvm"
-  fi
-}
-
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
 if [[ $- != *i* ]] ; then
-  initialize_rvm
-
   # Shell is non-interactive.  Be done now!
   return
 fi
@@ -22,12 +13,14 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
   c_path='\[\033[01;34m\]'
   c_git_clean='\[\e[0;36m\]'
   c_git_dirty='\[\e[0;35m\]'
+  c_lambda='\[\033[01;33m\]'
 else
   c_reset=
   c_user=
   c_path=
   c_git_clean=
   c_git_dirty=
+  c_lambda=
 fi
 
 # Show current branch if we are in git repo
@@ -49,7 +42,7 @@ git_prompt()
 }
 
 # Thy holy prompt.
-export PROMPT_COMMAND='PS1="${c_user}\u@\h${c_path} \w${c_reset}$(git_prompt)${c_path} $ ${c_reset}\[\e[0m\]"'
+export PROMPT_COMMAND='PS1="${c_user}\u@\h${c_path} \w${c_reset}$(git_prompt)${c_path} ${c_lambda}λ ${c_reset}\[\e[0m\]"'
 
 if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
   update_terminal_cwd() {
@@ -62,7 +55,7 @@ if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
     printf '\e]7;%s\a' "$PWD_URL"
   }
 
-  export PROMPT_COMMAND='update_terminal_cwd; PS1="${c_user}\u@\h${c_path} \w${c_reset}$(git_prompt)${c_path} $ ${c_reset}\[\e[0m\]"'
+  export PROMPT_COMMAND='update_terminal_cwd; PS1="${c_user}\u@\h${c_path} \w${c_reset}$(git_prompt)${c_path} ${c_lambda}λ ${c_reset}\[\e[0m\]"'
 fi
 
 alias grep='grep --color=auto'
@@ -89,9 +82,6 @@ export HISTIGNORE='cd:ls:mc'
 
 shopt -s cdspell cmdhist histappend
 
-# Homebrew
-export PATH="/usr/local/bin:${PATH}"
-
 # Bash-completion
 if [ $(which brew) ]; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -104,7 +94,5 @@ if ! shopt -oq posix; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
-  fi  
+  fi
 fi
-
-initialize_rvm

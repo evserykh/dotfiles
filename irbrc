@@ -1,7 +1,7 @@
 require 'irb/ext/save-history'
 require 'irb/completion'
 
-IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:SAVE_HISTORY] = 5000
 
 def try_hirb
   begin
